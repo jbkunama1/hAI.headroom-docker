@@ -6,19 +6,19 @@ services:
     container_name: headroom
     restart: unless-stopped
     ports:
-      - "8080:80"   # Port mapping (change if needed)
+      - "8484:80"   # Port mapping (change if needed)
     environment:
       - HEADROOM_API_KEY=${HEADROOM_API_KEY}
       - HEADROOM_ENV=production
     volumes:
       - headroom_data:/var/lib/headroom
     networks:
-      - headroom_net
+      - highfishNetwork
 
 volumes:
   headroom_data:
     driver: local
 
 networks:
-  headroom_net:
-    driver: bridge
+  highfishNetwork:
+    external: true
